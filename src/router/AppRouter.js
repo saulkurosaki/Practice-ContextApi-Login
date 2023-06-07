@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Routes,Route, NavLink, BrowserRouter } from 'react-router-dom';
 import { Inicio } from '../components/Inicio';
 import { Articulos } from '../components/Articulos';
 import { Acerca } from '../components/Acerca';
 import { Contacto } from '../components/Contacto';
 import { Login } from '../components/Login';
+import { PruebaContext } from '../context/PruebaContext';
 
 export const AppRouter = () => {
+
+  const {usuario, setUsuario} = useContext(PruebaContext);
+
   return (
     <BrowserRouter>
     
@@ -17,7 +21,7 @@ export const AppRouter = () => {
         <div className='logo'>
           <h2>Practica React Context</h2>
         </div>
-        
+
         <ul>
           <li>
             <NavLink to='/inicio'>Inicio</NavLink>
@@ -32,7 +36,21 @@ export const AppRouter = () => {
             <NavLink to='/contacto'>Contacto</NavLink>
           </li>
           <li>
-            <NavLink to='/login'>Login</NavLink>
+            {usuario.nick !== null ? (
+              <>
+                <NavLink to='/'><strong>{usuario.nick}</strong></NavLink>
+                <a href='#' onClick={e => {
+                  e.preventDefault();
+                  setUsuario({
+                    nick: null,
+                    nombre: '-Aquí va el nombre-', 
+                    apellidos: '-Aquí va el apellido-'
+                  });
+                }}>Cerrar Sesión</a>
+              </>
+            ):(
+              <NavLink to='/login'>Login</NavLink>
+            )}
           </li>
         </ul>
       </nav>
