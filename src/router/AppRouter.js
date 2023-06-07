@@ -14,6 +14,10 @@ export const AppRouter = () => {
 
     <header className='header'>
       <nav>
+        <div className='logo'>
+          <h2>Practica React Context</h2>
+        </div>
+        
         <ul>
           <li>
             <NavLink to='/inicio'>Inicio</NavLink>
