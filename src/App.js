@@ -11,12 +11,6 @@ function App() {
     apellidos: 'Paredes Fano'
   });
 
-  const curso = {
-    id: 1,
-    titulo: "Master en TypeScript",
-    descripción: "Muchas horas de contenido",
-  };
-
   return (
     <div className="App">
       <PruebaContext.Provider value={{

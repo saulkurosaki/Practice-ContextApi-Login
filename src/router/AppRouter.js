@@ -35,23 +35,27 @@ export const AppRouter = () => {
           <li>
             <NavLink to='/contacto'>Contacto</NavLink>
           </li>
-          <li>
-            {usuario.nick !== null ? (
-              <>
-                <NavLink to='/'><strong>{usuario.nick}</strong></NavLink>
+
+          {usuario.nick !== null ? (
+            <>
+              <li>
+                <NavLink to='/'><strong>{usuario.nick}</strong></NavLink>                  
+              </li>
+
+              <li>
                 <a href='#' onClick={e => {
                   e.preventDefault();
-                  setUsuario({
-                    nick: null,
-                    nombre: '-Aquí va el nombre-', 
-                    apellidos: '-Aquí va el apellido-'
-                  });
+                  setUsuario({});
                 }}>Cerrar Sesión</a>
-              </>
-            ):(
+              </li>
+
+            </>
+          ):(
+            <li>
               <NavLink to='/login'>Login</NavLink>
-            )}
-          </li>
+            </li>
+          )}
+
         </ul>
       </nav>
     </header>
